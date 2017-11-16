@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+  font-family: 'Roboto';
+}
+
+.container {
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #34495c;
+  margin: 2em auto;
+  color: #fff;
+  padding: 1em;
+  font-size: 2rem;
+}
+
+.matchContainer {
+  margin: 1em 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+tr {
+  width: 20em;
+  margin: 0.4em 0;
+}
+
+td {
+  width: 5em;
+}
+
+.buttonsContainer {
+  text-align: center;
+  margin: 1em auto;
+  width: 400px;
+}
+
+button {
+  width: 100px;
+  border: none;
+  background-color: #34495c;
+  padding: 1em;
+  color: #fff;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.tdCenter {
+  text-align: center;
+}
+
+.dateTime {
+  font-size: 1rem;
+  text-transform: none;
+}
+
+img {
+  padding: 0 0.5em;
+  width: 64px;
+  height: 64px;
+}
