@@ -10,6 +10,8 @@ import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { russianPL } from '../tables/russianPL';
 import { championship } from '../tables/championship';
+import { primeira } from '../tables/primeira';
+import { superLig } from '../tables/superLig';
 import { round12 } from '../rounds/laliga/round12';
 import { EPLround12 } from '../rounds/epl/round12';
 import { BundesligaRound12 } from '../rounds/bundesliga/round12';
@@ -17,12 +19,14 @@ import { SeriaARound13 } from '../rounds/seriaA/round13';
 import { FranceRound13 } from '../rounds/ligue1/round13';
 import { RussiaRound17 } from '../rounds/russianPL/round17';
 import { shipRound17 } from '../rounds/championship/round17';
+import { PortRound12 } from '../rounds/primeira/round12';
+import { TurkRound12 } from '../rounds/superLig/round12';
 import s from './style.scss';
 
 type Props = void;
 
 type State = {
-  show: 'SeriaA' | 'LaLiga' | 'EPL' | 'Bundesliga' | 'Ligue1' | 'Russia' | 'Ship'
+  show: 'SeriaA' | 'LaLiga' | 'EPL' | 'Bundesliga' | 'Ligue1' | 'Russia' | 'Ship' | 'Port' | 'SuperLig'
 };
 
 class Container extends React.Component<Props, State> {
@@ -44,6 +48,8 @@ class Container extends React.Component<Props, State> {
           <button onClick={() => this.setState({ show: 'Ligue1' })}>Ligue 1</button>
           <button onClick={() => this.setState({ show: 'Russia' })}>Premier League</button>
           <button onClick={() => this.setState({ show: 'Ship' })}>Championship</button>
+          <button onClick={() => this.setState({ show: 'Port' })}>Primeira</button>
+          <button onClick={() => this.setState({ show: 'SuperLig' })}>Super Lig</button>
         </div>
         <table className={s.container}>
           {matches.map(match => {
@@ -91,6 +97,8 @@ class Container extends React.Component<Props, State> {
     const ligue1Table = this.renderTable(FranceRound13, ligue1);
     const russianTable = this.renderTable(RussiaRound17, russianPL);
     const shipTable = this.renderTable(shipRound17, championship);
+    const portTable = this.renderTable(PortRound12, primeira);
+    const turkTable = this.renderTable(TurkRound12, superLig);
 
     if (show === 'EPL') {
       return eplTable;
@@ -119,6 +127,14 @@ class Container extends React.Component<Props, State> {
     if (show === 'Ship') {
       return shipTable;
     }
+	
+	if (show === 'Port') {
+      return portTable;
+    }
+	
+	if (show === 'SuperLig') {
+	  return turkTable;
+	}
   }
 }
 
