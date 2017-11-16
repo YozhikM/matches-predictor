@@ -9,18 +9,20 @@ import { bundesliga } from '../tables/bundesliga';
 import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { russianPL } from '../tables/russianPL';
+import { championship } from '../tables/championship';
 import { round12 } from '../rounds/laliga/round12';
 import { EPLround12 } from '../rounds/epl/round12';
 import { BundesligaRound12 } from '../rounds/bundesliga/round12';
 import { SeriaARound13 } from '../rounds/seriaA/round13';
 import { FranceRound13 } from '../rounds/ligue1/round13';
 import { RussiaRound17 } from '../rounds/russianPL/round17';
+import { shipRound17 } from '../rounds/championship/round17';
 import s from './style.scss';
 
 type Props = void;
 
 type State = {
-  show: 'SeriaA' | 'LaLiga' | 'EPL' | 'Bundesliga' | 'Ligue1' | 'Russia'
+  show: 'SeriaA' | 'LaLiga' | 'EPL' | 'Bundesliga' | 'Ligue1' | 'Russia' | 'Ship'
 };
 
 class Container extends React.Component<Props, State> {
@@ -41,6 +43,7 @@ class Container extends React.Component<Props, State> {
           <button onClick={() => this.setState({ show: 'SeriaA' })}>Seria A</button>
           <button onClick={() => this.setState({ show: 'Ligue1' })}>Ligue 1</button>
           <button onClick={() => this.setState({ show: 'Russia' })}>Premier League</button>
+          <button onClick={() => this.setState({ show: 'Ship' })}>Championship</button>
         </div>
         <table className={s.container}>
           {matches.map(match => {
@@ -87,6 +90,7 @@ class Container extends React.Component<Props, State> {
     const seriaATable = this.renderTable(SeriaARound13, seriaA);
     const ligue1Table = this.renderTable(FranceRound13, ligue1);
     const russianTable = this.renderTable(RussiaRound17, russianPL);
+    const shipTable = this.renderTable(shipRound17, championship);
 
     if (show === 'EPL') {
       return eplTable;
@@ -110,6 +114,10 @@ class Container extends React.Component<Props, State> {
 
     if (show === 'Russia') {
       return russianTable;
+    }
+
+    if (show === 'Ship') {
+      return shipTable;
     }
   }
 }
