@@ -34,7 +34,7 @@ function getDiff(teamOne, teamTwo) {
 }
 
 function result(a, b, c = 0) {
-  return a + b + c;
+  return ~~(a + b + c);
 }
 
 export function getTable(round: Round, liga: Liga) {
@@ -43,31 +43,33 @@ export function getTable(round: Round, liga: Liga) {
     let away = round[i].away;
     let homePlace = liga[home].place;
     let awayPlace = liga[away].place;
-    let homePoints = liga[home].points;
-    let awayPoints = liga[away].points;
+    let homePoints = liga[home].points + liga[home].past;
+    let awayPoints = liga[away].points + liga[away].past;
     let place = getPlace(homePlace, awayPlace);
     let diffInPlace = getDiff(homePlace, awayPlace);
     round[i].homeLogo = liga[home].logo;
     round[i].awayLogo = liga[away].logo;
     let diffInPoints;
+	const bottomOfTable = ~~(round.length * 1.5);
+	const topOfTable = ~~(round.length / 1.75);
 
     if (homePoints > awayPoints) {
-      diffInPoints = homePoints - awayPoints;
-      if (homePlace >= 15 && awayPlace >= 15 && diffInPoints <= 9) {
+      diffInPoints = liga[home].points - liga[away].points;
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
         round[i].survive = true;
       }
-      if ((homePlace <= 6 || awayPlace <= 6) && diffInPoints <= 6) {
-        round[i].rating = result(place, diffInPlace) - (7 - diffInPoints);
+      if (homePlace <= topOfTable || awayPlace <= topOfTable) {
+        round[i].rating = result(place, diffInPlace) - 4.5;
       } else {
         round[i].rating = result(place, diffInPlace);
       }
     } else {
-      diffInPoints = awayPoints - homePoints;
-      if (homePlace >= 15 && awayPlace >= 15 && diffInPoints <= 9) {
+      diffInPoints = liga[away].points - liga[home].points;
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
         round[i].survive = true;
       }
-      if ((homePlace <= 6 || awayPlace <= 6) && diffInPoints <= 6) {
-        round[i].rating = result(place, diffInPlace) - (7 - diffInPoints);
+      if (homePlace <= topOfTable || awayPlace <= topOfTable) {
+        round[i].rating = result(place, diffInPlace) - 4.5;
       } else {
         round[i].rating = result(place, diffInPlace);
       }
@@ -81,5 +83,5 @@ export function getTable(round: Round, liga: Liga) {
 export function sortMatch(matchA: Match, matchB: Match) {
   if (matchA.rating && matchB.rating) {
     return matchA.rating - matchB.rating;
-  }
+  };
 }

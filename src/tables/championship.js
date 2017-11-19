@@ -94,7 +94,7 @@ export const championship = {
   Millwall: {
     place: 19,
     points: 17,
-    logo: 'http://st1.soccer365.ru/s1/logo/HEmf0Plz_64_6923.pngg'
+    logo: 'http://st1.soccer365.ru/s1/logo/iPsvu48I_6923.png'
   },
   'Hull City': {
     place: 20,
