@@ -34,12 +34,24 @@ class Container extends React.Component<Props, State> {
     return (
       <div>
         <div className={s.buttonsContainer}>
-          <button onClick={() => this.setState({ show: 'EPL' })}>England <br /> EPL</button>
-          <button onClick={() => this.setState({ show: 'LaLiga' })}>Spain <br /> La Liga</button>
-          <button onClick={() => this.setState({ show: 'Bundesliga' })}>Germany <br /> Bundesliga</button>
-          <button onClick={() => this.setState({ show: 'SeriaA' })}>Italy <br /> Seria A</button>
-          <button onClick={() => this.setState({ show: 'Ligue1' })}>France <br /> Ligue 1</button>
-          <button onClick={() => this.setState({ show: 'Ship' })}>England <br /> Championship</button>
+          <button onClick={() => this.setState({ show: 'EPL' })}>
+            England <br /> EPL
+          </button>
+          <button onClick={() => this.setState({ show: 'LaLiga' })}>
+            Spain <br /> La Liga
+          </button>
+          <button onClick={() => this.setState({ show: 'Bundesliga' })}>
+            Germany <br /> Bundesliga
+          </button>
+          <button onClick={() => this.setState({ show: 'SeriaA' })}>
+            Italy <br /> Seria A
+          </button>
+          <button onClick={() => this.setState({ show: 'Ligue1' })}>
+            France <br /> Ligue 1
+          </button>
+          <button onClick={() => this.setState({ show: 'Ship' })}>
+            England <br /> Championship
+          </button>
         </div>
         <table className={s.container}>
           {matches.map((match, i) => {
@@ -49,7 +61,10 @@ class Container extends React.Component<Props, State> {
             if (match.rating <= ~~(matches.length / 2)) {
               icon = <SvgIcon file="flame" />;
             }
-            if (match.rating > ~~(matches.length / 2) && match.rating <= ~~(matches.length / 0.75)) {
+            if (
+              match.rating > ~~(matches.length / 2) &&
+              match.rating <= ~~(matches.length / 0.75)
+            ) {
               icon = <SvgIcon file="sunny" />;
             }
             if (match.rating >= ~~(matches.length / 0.45)) {
@@ -60,23 +75,30 @@ class Container extends React.Component<Props, State> {
             }
 
             return (
-			<div key={i}>
-			{match.time && match.day && <div className={s.tr}>
-			    <td className={s.upDay}>{match.day}&nbsp;{'/'}</td>
-                <td className={s.upTime}>{'/'}&nbsp;{match.time}</td>
-            </div>}
-              <div className={s.tr}>
-                <div className={s.td && s.img}>
-                  <img src={match.homeLogo} alt="" />
-                </div>
-                <div className={s.tdLeft}>{match.home}</div>
-                <div className={s.tdCenter}>{icon}</div>
-                <div className={s.tdRight}>{match.away}</div>
-                <div className={s.td && s.img}>
-                  <img src={match.awayLogo} alt="" />
+              <div key={i}>
+                {match.time &&
+                  match.day && (
+                    <div className={s.tr}>
+                      <td className={s.upDay}>
+                        {match.day}&nbsp;{'/'}
+                      </td>
+                      <td className={s.upTime}>
+                        {'/'}&nbsp;{match.time}
+                      </td>
+                    </div>
+                  )}
+                <div className={s.tr}>
+                  <div className={s.td && s.img}>
+                    <img src={match.homeLogo} alt="" />
+                  </div>
+                  <div className={s.tdLeft}>{match.home}</div>
+                  <div className={s.tdCenter}>{icon}</div>
+                  <div className={s.tdRight}>{match.away}</div>
+                  <div className={s.td && s.img}>
+                    <img src={match.awayLogo} alt="" />
+                  </div>
                 </div>
               </div>
-			  </div>
             );
           })}
         </table>
@@ -90,9 +112,9 @@ class Container extends React.Component<Props, State> {
     const laligaTable = this.renderTable(round12, laliga);
     const bundesTable = this.renderTable(BundesligaRound12, bundesliga);
     const seriaATable = this.renderTable(SeriaARound13, seriaA);
-    const ligue1Table = this.renderTable(FranceRound13, ligue1);;
+    const ligue1Table = this.renderTable(FranceRound13, ligue1);
     const shipTable = this.renderTable(shipRound17, championship);
-	
+
     if (show === 'EPL') {
       return eplTable;
     }

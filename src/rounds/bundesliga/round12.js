@@ -5,8 +5,8 @@ export const BundesligaRound12 = [
     home: 'Stuttgart',
     away: 'B. Dortmund',
     rating: 0,
-	time: '1:30',
-	day: '18.11',
+    time: '1:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -14,8 +14,8 @@ export const BundesligaRound12 = [
     home: 'Bayern',
     away: 'Augsburg',
     rating: 0,
-	time: '20:30',
-	day: '18.11',
+    time: '20:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -23,8 +23,8 @@ export const BundesligaRound12 = [
     home: 'Hoffenheim',
     away: 'Eintracht',
     rating: 0,
-	time: '20:30',
-	day: '18.11',
+    time: '20:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -32,8 +32,8 @@ export const BundesligaRound12 = [
     home: 'Bayer',
     away: 'RB Leipzig',
     rating: 0,
-	time: '20:30',
-	day: '18.11',
+    time: '20:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -41,8 +41,8 @@ export const BundesligaRound12 = [
     home: 'Mainz',
     away: 'Koln',
     rating: 0,
-	time: '20:30',
-	day: '18.11',
+    time: '20:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -50,8 +50,8 @@ export const BundesligaRound12 = [
     home: 'Wolfsburg',
     away: 'Freiburg',
     rating: 0,
-	time: '20:30',
-	day: '18.11',
+    time: '20:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -59,8 +59,8 @@ export const BundesligaRound12 = [
     home: 'Hertha',
     away: "B. M'gladbach",
     rating: 0,
-	time: '23:30',
-	day: '18.11',
+    time: '23:30',
+    day: '18.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -68,8 +68,8 @@ export const BundesligaRound12 = [
     home: 'Shalke-04',
     away: 'Hamburg',
     rating: 0,
-	time: '20:30',
-	day: '19.11',
+    time: '20:30',
+    day: '19.11',
     homeLogo: null,
     awayLogo: null
   },
@@ -77,8 +77,8 @@ export const BundesligaRound12 = [
     home: 'Werder',
     away: 'Hannover',
     rating: 0,
-	time: '23:00',
-	day: '19.11',
+    time: '23:00',
+    day: '19.11',
     homeLogo: null,
     awayLogo: null
   }

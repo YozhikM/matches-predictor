@@ -3,42 +3,42 @@
 export const EPLround13 = [
   {
     home: 'West Ham',
-    away: 'Leicester',
+    away: 'Leicester'
   },
   {
     home: 'Crystal Palace',
-    away: 'Stoke City',
+    away: 'Stoke City'
   },
   {
     home: 'Manchester United',
-    away: 'Brighton',
+    away: 'Brighton'
   },
   {
     home: 'Newcastle',
-    away: 'Watford',
+    away: 'Watford'
   },
   {
     home: 'Swansea',
-    away: 'Bournemouth',
+    away: 'Bournemouth'
   },
   {
     home: 'Tottenham',
-    away: 'West Bromwich Albion',
+    away: 'West Bromwich Albion'
   },
   {
     home: 'Liverpool',
-    away: 'Chelsea',
+    away: 'Chelsea'
   },
   {
     home: 'Southampton',
-    away: 'Everton',
+    away: 'Everton'
   },
   {
     home: 'Burnley',
-    away: 'Arsenal',
+    away: 'Arsenal'
   },
   {
     home: 'Huddersfield',
-    away: 'Manchester City',
+    away: 'Manchester City'
   }
 ];

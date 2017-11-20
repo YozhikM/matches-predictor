@@ -7,8 +7,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '0:00',
-	day: '18.11'
+    time: '0:00',
+    day: '18.11'
   },
   {
     home: 'Amiens',
@@ -16,8 +16,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:45',
-	day: '18.11'
+    time: '1:45',
+    day: '18.11'
   },
   {
     home: 'PSG',
@@ -25,8 +25,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '22:00',
-	day: '18.11'
+    time: '22:00',
+    day: '18.11'
   },
   {
     home: 'Dijon',
@@ -34,8 +34,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:00',
-	day: '19.11'
+    time: '1:00',
+    day: '19.11'
   },
   {
     home: 'Guingamp',
@@ -43,8 +43,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:00',
-	day: '19.11'
+    time: '1:00',
+    day: '19.11'
   },
   {
     home: 'Strasbourg',
@@ -52,8 +52,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:00',
-	day: '19.11'
+    time: '1:00',
+    day: '19.11'
   },
   {
     home: 'Toulouse',
@@ -61,8 +61,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:00',
-	day: '19.11'
+    time: '1:00',
+    day: '19.11'
   },
   {
     home: 'Caen',
@@ -70,8 +70,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '1:00',
-	day: '19.11'
+    time: '1:00',
+    day: '19.11'
   },
   {
     home: 'Lyon',
@@ -79,8 +79,8 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '22:00',
-	day: '19.11'
+    time: '22:00',
+    day: '19.11'
   },
   {
     home: 'Bordeaux',
@@ -88,7 +88,7 @@ export const FranceRound13 = [
     rating: 0,
     homeLogo: null,
     awayLogo: null,
-	time: '2:00',
-	day: '20.11'
+    time: '2:00',
+    day: '20.11'
   }
 ];

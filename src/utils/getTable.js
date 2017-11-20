@@ -7,7 +7,7 @@ type Match = {
   homeLogo?: ?string,
   awayLogo?: ?string,
   survive?: ?boolean,
-  date?: string,
+  day?: string,
   time?: string
 };
 
@@ -43,15 +43,15 @@ export function getTable(round: Round, liga: Liga) {
     let away = round[i].away;
     let homePlace = liga[home].place;
     let awayPlace = liga[away].place;
-    let homePoints = liga[home].points + liga[home].past;
-    let awayPoints = liga[away].points + liga[away].past;
+    let homePoints = liga[home].points;
+    let awayPoints = liga[away].points;
     let place = getPlace(homePlace, awayPlace);
     let diffInPlace = getDiff(homePlace, awayPlace);
     round[i].homeLogo = liga[home].logo;
     round[i].awayLogo = liga[away].logo;
     let diffInPoints;
-	const bottomOfTable = ~~(round.length * 1.5);
-	const topOfTable = ~~(round.length / 1.75);
+    const bottomOfTable = ~~(round.length * 1.5);
+    const topOfTable = ~~(round.length / 1.75);
 
     if (homePoints > awayPoints) {
       diffInPoints = liga[home].points - liga[away].points;
@@ -83,5 +83,5 @@ export function getTable(round: Round, liga: Liga) {
 export function sortMatch(matchA: Match, matchB: Match) {
   if (matchA.rating && matchB.rating) {
     return matchA.rating - matchB.rating;
-  };
+  }
 }

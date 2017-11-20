@@ -3,34 +3,34 @@
 export const RussiaRound17 = [
   {
     home: 'SKA',
-    away: 'CSKA',
+    away: 'CSKA'
   },
   {
     home: 'Dynamo',
-    away: 'Akhmat',
+    away: 'Akhmat'
   },
   {
     home: 'Krasnodar',
-    away: 'Spartak',
+    away: 'Spartak'
   },
   {
     home: 'Arsenal Tula',
-    away: 'Rubin',
+    away: 'Rubin'
   },
   {
     home: 'Ufa',
-    away: 'Ural',
+    away: 'Ural'
   },
   {
     home: 'Anzhi',
-    away: 'Lokomotiv',
+    away: 'Lokomotiv'
   },
   {
     home: 'Rostov',
-    away: 'Amkar',
+    away: 'Amkar'
   },
   {
     home: 'Zenit',
-    away: 'Tosno',
+    away: 'Tosno'
   }
 ];
