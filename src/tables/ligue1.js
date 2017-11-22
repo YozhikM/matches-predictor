@@ -19,7 +19,7 @@ export const ligue1 = {
   Marseille: {
     place: 4,
     points: 25,
-    logo: 'http://st1.soccer365.ru/s1/logo/HxbAy_64_93.png'
+    logo: 'http://st1.soccer365.ru/s1/logo/PEbTkCG_93.png'
   },
   Nantes: {
     place: 5,

@@ -24,7 +24,7 @@ export const epl = {
   Liverpool: {
     place: 5,
     points: 22,
-    logo: 'http://st1.soccer365.ru/s1/logo/2BGpHU_64_79.png'
+    logo: 'http://st1.soccer365.ru/s1/logo/6V9tGK_79.png'
   },
   Arsenal: {
     place: 6,
