@@ -3,8 +3,8 @@
 @media only screen and (max-width: 1024px) {
   .container {
     width: 100vw;
-	font-size: 1rem;
-	margin: 0;
+    font-size: 1rem;
+    margin: 0;
   }
   .tr {
     width: 100vw;
@@ -32,6 +32,8 @@ body {
   background-color: #34495c;
   color: #fff;
   padding: 1em;
+  margin: 0 auto;
+  width: 50vw;
 }
 
 .matchContainer {
@@ -43,6 +45,7 @@ body {
 }
 
 .tr {
+  width: 50vw;
   margin: 0.8em 0;
   display: flex;
   justify-content: space-between;
@@ -73,7 +76,8 @@ button {
   min-width: 10vw;
 }
 
-.tdLeft, .tdRight {
+.tdLeft,
+.tdRight {
   display: flex;
   align-items: center;
   width: 25vw;
@@ -84,7 +88,8 @@ button {
   text-align: left;
 }
 
-.upTime, .upDay {
+.upTime,
+.upDay {
   display: flex;
   width: 50vw;
   align-items: center;
@@ -113,6 +118,10 @@ button {
 .dateTime {
   font-size: 1rem;
   text-transform: none;
+}
+
+.td {
+  width: 12.5vw;
 }
 
 img {

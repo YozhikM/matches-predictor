@@ -4,71 +4,61 @@ export const SeriaARound14 = [
   {
     home: 'Bologna',
     away: 'Sampdoria',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:00',
+    day: '25.11'
   },
   {
     home: 'Chievo',
     away: 'SPAL',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '23:00',
+    day: '25.11'
   },
   {
     home: 'Sassuolo',
     away: 'Verona',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '23:00',
+    day: '25.11'
   },
   {
     home: 'Cagliari',
     away: 'Inter',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '01:45',
+    day: '26.11'
   },
   {
     home: 'Genoa',
     away: 'Roma',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:00',
+    day: '26.11'
   },
   {
     home: 'Milan',
     away: 'Torino',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:00',
+    day: '26.11'
   },
   {
     home: 'Udinese',
     away: 'Napoli',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:00',
+    day: '26.11'
   },
   {
     home: 'Lazio',
     away: 'Fiorentina',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '23:00',
+    day: '26.11'
   },
   {
     home: 'Juventus',
     away: 'Crotone',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '01:45',
+    day: '27.11'
   },
   {
     home: 'Atalanta',
     away: 'Benevento',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '01:45',
+    day: '28.11'
   }
 ];

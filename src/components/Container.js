@@ -9,12 +9,12 @@ import { bundesliga } from '../tables/bundesliga';
 import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { championship } from '../tables/championship';
-import { round12 } from '../rounds/laliga/round12';
-import { EPLround12 } from '../rounds/epl/round12';
-import { BundesligaRound12 } from '../rounds/bundesliga/round12';
-import { SeriaARound13 } from '../rounds/seriaA/round13';
-import { FranceRound13 } from '../rounds/ligue1/round13';
-import { shipRound17 } from '../rounds/championship/round17';
+import { round13 } from '../rounds/laliga/round13';
+import { EPLround13 } from '../rounds/epl/round13';
+import { BundesligaRound13 } from '../rounds/bundesliga/round13';
+import { SeriaARound14 } from '../rounds/seriaA/round14';
+import { FranceRound14 } from '../rounds/ligue1/round14';
+import { shipRound18 } from '../rounds/championship/round18';
 import s from './style.scss';
 
 type Props = void;
@@ -108,12 +108,12 @@ class Container extends React.Component<Props, State> {
 
   render() {
     const { show } = this.state;
-    const eplTable = this.renderTable(EPLround12, epl);
-    const laligaTable = this.renderTable(round12, laliga);
-    const bundesTable = this.renderTable(BundesligaRound12, bundesliga);
-    const seriaATable = this.renderTable(SeriaARound13, seriaA);
-    const ligue1Table = this.renderTable(FranceRound13, ligue1);
-    const shipTable = this.renderTable(shipRound17, championship);
+    const eplTable = this.renderTable(EPLround13, epl);
+    const laligaTable = this.renderTable(round13, laliga);
+    const bundesTable = this.renderTable(BundesligaRound13, bundesliga);
+    const seriaATable = this.renderTable(SeriaARound14, seriaA);
+    const ligue1Table = this.renderTable(FranceRound14, ligue1);
+    const shipTable = this.renderTable(shipRound18, championship);
 
     if (show === 'EPL') {
       return eplTable;

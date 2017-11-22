@@ -4,31 +4,26 @@ export const bundesliga = {
   Bayern: {
     place: 1,
     points: 29,
-    past: 41,
     logo: 'http://st1.soccer365.ru/s1/logo/HroJt6N_64_8.png'
   },
   'RB Leipzig': {
     place: 3,
-    points: 22,
-    past: 33.5,
+    points: 23,
     logo: 'http://st1.soccer365.ru/s1/logo/A8o9up_64_7832.png'
   },
   'B. Dortmund': {
     place: 5,
     points: 20,
-    past: 32,
     logo: 'http://st1.soccer365.ru/s1/logo/UUof56_64_263.png'
   },
   'Shalke-04': {
     place: 2,
     points: 23,
-    past: 21.5,
     logo: 'http://st1.soccer365.ru/s1/logo/MbOwKkm_64_185.png'
   },
   Hoffenheim: {
     place: 6,
     points: 20,
-    past: 31,
     logo: 'http://st1.soccer365.ru/s1/logo/elHs4iap_64_260.png'
   },
   Hannover: {
@@ -39,31 +34,26 @@ export const bundesliga = {
   Eintracht: {
     place: 7,
     points: 19,
-    past: 21,
     logo: 'http://st1.soccer365.ru/s1/logo/l8QEA6K_64_254.png'
   },
   "B. M'gladbach": {
     place: 4,
     points: 21,
-    past: 22.5,
     logo: 'http://st1.soccer365.ru/s1/logo/6ZSzM_64_264.png'
   },
   Bayer: {
     place: 9,
     points: 17,
-    past: 20.5,
     logo: 'http://st1.soccer365.ru/s1/logo/3HTrlF_64_9.png'
   },
   Augsburg: {
     place: 10,
     points: 16,
-    past: 19,
     logo: 'http://st1.soccer365.ru/s1/logo/TcTBI_64_5.png'
   },
   Hertha: {
     place: 14,
     points: 14,
-    past: 24.5,
     logo: 'http://st1.soccer365.ru/s1/logo/05Lhn_64_46.png'
   },
   Stuttgart: {
@@ -74,37 +64,31 @@ export const bundesliga = {
   Mainz: {
     place: 12,
     points: 15,
-    past: 18.5,
     logo: 'http://st1.soccer365.ru/s1/logo/W7ugHsZA_64_250.png'
   },
   Wolfsburg: {
     place: 13,
     points: 14,
-    past: 18.5,
     logo: 'http://st1.soccer365.ru/s1/logo/Vi3lyB_64_39.png'
   },
   Hamburg: {
     place: 15,
     points: 10,
-    past: 19,
     logo: 'http://st1.soccer365.ru/s1/logo/dhYvf3ag_64_43.png'
   },
   Freiburg: {
     place: 17,
     points: 8,
-    past: 24,
     logo: 'http://st1.soccer365.ru/s1/logo/1TO6r4_64_174.png'
   },
   Werder: {
     place: 16,
     points: 8,
-    past: 22.5,
     logo: 'http://st1.soccer365.ru/s1/logo/KLNw0C_64_32.png'
   },
   Koln: {
     place: 18,
     points: 2,
-    past: 24.5,
     logo: 'http://st1.soccer365.ru/s1/logo/P0OAXqq4_64_61.png'
   }
 };

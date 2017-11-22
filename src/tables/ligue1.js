@@ -18,7 +18,7 @@ export const ligue1 = {
   },
   Marseille: {
     place: 4,
-    points: 24,
+    points: 25,
     logo: 'http://st1.soccer365.ru/s1/logo/HxbAy_64_93.png'
   },
   Nantes: {
@@ -43,7 +43,7 @@ export const ligue1 = {
   },
   Bordeaux: {
     place: 9,
-    points: 16,
+    points: 17,
     logo: 'http://st1.soccer365.ru/s1/logo/SzlKfG41_64_22.png'
   },
   Rennes: {

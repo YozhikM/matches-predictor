@@ -33,7 +33,7 @@ function getDiff(teamOne, teamTwo) {
   }
 }
 
-function result(a, b, c = 0) {
+function result(a, b, c = 0):number {
   return ~~(a + b + c);
 }
 
@@ -54,7 +54,7 @@ export function getTable(round: Round, liga: Liga) {
     const topOfTable = ~~(round.length / 1.75);
 
     if (homePoints > awayPoints) {
-      diffInPoints = liga[home].points - liga[away].points;
+      diffInPoints = homePoints - awayPoints;
       if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
         round[i].survive = true;
       }
@@ -64,7 +64,7 @@ export function getTable(round: Round, liga: Liga) {
         round[i].rating = result(place, diffInPlace);
       }
     } else {
-      diffInPoints = liga[away].points - liga[home].points;
+      diffInPoints = awayPoints - homePoints;
       if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
         round[i].survive = true;
       }

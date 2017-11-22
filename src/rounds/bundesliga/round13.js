@@ -4,64 +4,55 @@ export const BundesligaRound13 = [
   {
     home: 'Hannover',
     away: 'Stuttgart',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '1:30',
+    day: '25.11'
   },
   {
     home: 'B. Dortmund',
     away: 'Shalke-04',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '25.11'
   },
   {
     home: 'RB Leipzig',
     away: 'Werder',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '25.11'
   },
   {
     home: 'Freiburg',
     away: 'Mainz',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '25.11'
   },
   {
     home: 'Eintracht',
     away: 'Bayer',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '25.11'
   },
   {
     home: 'Augsburg',
     away: 'Wolfsburg',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '25.11'
   },
   {
     home: "B. M'gladbach",
     away: 'Bayern',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '23:30',
+    day: '25.11'
   },
   {
     home: 'Hamburg',
     away: 'Hoffenheim',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '20:30',
+    day: '26.11'
   },
   {
     home: 'Koln',
     away: 'Hertha',
-    rating: 0,
-    homeLogo: null,
-    awayLogo: null
+    time: '23:30',
+    day: '26.11'
   }
 ];
