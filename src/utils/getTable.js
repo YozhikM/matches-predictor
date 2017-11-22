@@ -59,7 +59,7 @@ export function getTable(round: Round, liga: Liga) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 4.5;
+        round[i].rating = result(place, diffInPlace) - 4;
       } else {
         round[i].rating = result(place, diffInPlace);
       }
@@ -69,7 +69,7 @@ export function getTable(round: Round, liga: Liga) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 4.5;
+        round[i].rating = result(place, diffInPlace) - 4;
       } else {
         round[i].rating = result(place, diffInPlace);
       }
