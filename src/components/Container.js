@@ -1,7 +1,6 @@
 /* @flow */
 
 import React from 'react';
-import SvgIcon from './SvgIcon/SvgIcon';
 import { getTable, sortMatch, type Round, type Liga } from '../utils/getTable';
 import { epl } from '../tables/epl';
 import { laliga } from '../tables/laliga';
@@ -15,12 +14,14 @@ import { BundesligaRound13 } from '../rounds/bundesliga/round13';
 import { SeriaARound14 } from '../rounds/seriaA/round14';
 import { FranceRound14 } from '../rounds/ligue1/round14';
 import { shipRound18 } from '../rounds/championship/round18';
+import RoundTable from './RoundTable';
+import Button from './Button';
 import s from './style.scss';
 
 type Props = void;
 
 type State = {
-  show: 'SeriaA' | 'LaLiga' | 'EPL' | 'Bundesliga' | 'Ligue1' | 'Ship'
+  show: string
 };
 
 class Container extends React.Component<Props, State> {
@@ -28,80 +29,49 @@ class Container extends React.Component<Props, State> {
     this.setState({ show: 'EPL' });
   }
 
+  onChangeShow = (show: string) => {
+    this.setState({ show });
+  };
+
   renderTable = (round: Round, liga: Liga) => {
     getTable(round, liga);
+    // $FlowFixMe
     const matches = round.sort(sortMatch);
     return (
       <div>
         <div className={s.buttonsContainer}>
-          <button onClick={() => this.setState({ show: 'EPL' })}>
-            England <br /> EPL
-          </button>
-          <button onClick={() => this.setState({ show: 'LaLiga' })}>
-            Spain <br /> La Liga
-          </button>
-          <button onClick={() => this.setState({ show: 'Bundesliga' })}>
-            Germany <br /> Bundesliga
-          </button>
-          <button onClick={() => this.setState({ show: 'SeriaA' })}>
-            Italy <br /> Seria A
-          </button>
-          <button onClick={() => this.setState({ show: 'Ligue1' })}>
-            France <br /> Ligue 1
-          </button>
-          <button onClick={() => this.setState({ show: 'Ship' })}>
-            England <br /> Championship
-          </button>
+          <Button
+            show="EPL"
+            country="EPL"
+            league="EPL"
+            onChange={this.onChangeShow} />
+          <Button
+            show="LaLiga"
+            country="Spain"
+            league="La Liga"
+            onChange={this.onChangeShow} />
+          <Button
+            show="Bundesliga"
+            country="Germany"
+            league="Bundesliga"
+            onChange={this.onChangeShow} />
+          <Button
+            show="SeriaA"
+            country="Italy"
+            league="Seria A"
+            onChange={this.onChangeShow} />
+          <Button
+            show="Ligue1"
+            country="France"
+            league="Ligue 1"
+            onChange={this.onChangeShow} />
+          <Button
+            show="Ship"
+            country="England"
+            league="Championship"
+            onChange={this.onChangeShow} />
         </div>
-        <table className={s.container}>
-          {matches.map((match, i) => {
-            let icon;
-            if (!match.rating) match.rating = 0;
-
-            if (match.rating <= ~~(matches.length / 2)) {
-              icon = <SvgIcon file="flame" />;
-            }
-            if (
-              match.rating > ~~(matches.length / 2) &&
-              match.rating <= ~~(matches.length / 0.75)
-            ) {
-              icon = <SvgIcon file="sunny" />;
-            }
-            if (match.rating >= ~~(matches.length / 0.45)) {
-              icon = <SvgIcon file="snowflake" />;
-            }
-            if (match.survive) {
-              icon = <SvgIcon file="fangs" />;
-            }
-
-            return (
-              <div key={i}>
-                {match.time &&
-                  match.day && (
-                    <div className={s.tr}>
-                      <td className={s.upDay}>
-                        {match.day}&nbsp;{'/'}
-                      </td>
-                      <td className={s.upTime}>
-                        {'/'}&nbsp;{match.time}
-                      </td>
-                    </div>
-                  )}
-                <div className={s.tr}>
-                  <div className={s.td && s.img}>
-                    <img src={match.homeLogo} alt="" />
-                  </div>
-                  <div className={s.tdLeft}>{match.home}</div>
-                  <div className={s.tdCenter}>{icon}</div>
-                  <div className={s.tdRight}>{match.away}</div>
-                  <div className={s.td && s.img}>
-                    <img src={match.awayLogo} alt="" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </table>
+        <RoundTable matches={matches} />
       </div>
     );
   };
