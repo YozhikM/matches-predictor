@@ -13,7 +13,7 @@ import { EPLround13 } from '../rounds/epl/round13';
 import { BundesligaRound13 } from '../rounds/bundesliga/round13';
 import { SeriaARound14 } from '../rounds/seriaA/round14';
 import { FranceRound14 } from '../rounds/ligue1/round14';
-import { shipRound18 } from '../rounds/championship/round18';
+import { shipRound19 } from '../rounds/championship/round19';
 import RoundTable from './RoundTable';
 import Button from './Button';
 import s from './style.scss';
@@ -42,7 +42,7 @@ class Container extends React.Component<Props, State> {
         <div className={s.buttonsContainer}>
           <Button
             show="EPL"
-            country="EPL"
+            country="England"
             league="EPL"
             onChange={this.onChangeShow} />
           <Button
@@ -83,7 +83,7 @@ class Container extends React.Component<Props, State> {
     const bundesTable = this.renderTable(BundesligaRound13, bundesliga);
     const seriaATable = this.renderTable(SeriaARound14, seriaA);
     const ligue1Table = this.renderTable(FranceRound14, ligue1);
-    const shipTable = this.renderTable(shipRound18, championship);
+    const shipTable = this.renderTable(shipRound19, championship);
 
     if (show === 'EPL') {
       return eplTable;
