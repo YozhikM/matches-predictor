@@ -37,7 +37,7 @@ function result(a, b, c = 0):number {
   return ~~(a + b + c);
 }
 
-export function getTable(round: Round, liga: Liga) {
+export function getTable(round: Round, liga: Liga, mode: Object) {
   for (let i = 0; i < round.length; i++) {
     let home = round[i].home;
     let away = round[i].away;
@@ -51,25 +51,25 @@ export function getTable(round: Round, liga: Liga) {
     round[i].awayLogo = liga[away].logo;
     let diffInPoints;
     const bottomOfTable = ~~(round.length * 1.5);
-    const topOfTable = ~~(round.length / 1.75);
+    const topOfTable = round.length / 2;
 
     if (homePoints > awayPoints) {
       diffInPoints = homePoints - awayPoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 4;
+        round[i].rating = result(place, diffInPlace) - (mode.soft ? 3 : 6);
       } else {
         round[i].rating = result(place, diffInPlace);
       }
     } else {
       diffInPoints = awayPoints - homePoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 6) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 4;
+        round[i].rating = result(place, diffInPlace) - (mode.soft ? 3 : 6);
       } else {
         round[i].rating = result(place, diffInPlace);
       }
@@ -78,8 +78,10 @@ export function getTable(round: Round, liga: Liga) {
       round[i].rating = 1;
     }
   }
+  return round.sort(sortMatch);
 }
 
+// $FlowFixMe
 export function sortMatch(matchA: Match, matchB: Match) {
   if (matchA.rating && matchB.rating) {
     return matchA.rating - matchB.rating;

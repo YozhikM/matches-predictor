@@ -1,8 +1,9 @@
 /* @flow */
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import RoundTable from './RoundTable';
+import Hello from './Hello';
 import Button from './Button';
 import s from './style.scss';
 
@@ -16,32 +17,38 @@ class Container extends React.Component<Props, State> {
       <Router>
         <div>
           <div className={s.buttonsContainer}>
-            <Link to="/epl">
+            <Link to="/england/epl">
               <Button country="England" league="EPL" />
             </Link>
-            <Link to="/laliga">
+            <Link to="/spain/laliga">
               <Button country="Spain" league="La Liga" />
             </Link>
-            <Link to="/bundesliga">
+            <Link to="/germany/bundesliga">
               <Button country="Germany" league="Bundesliga" />
             </Link>
-            <Link to="/seria">
+            <Link to="/italy/seria">
               <Button country="Italy" league="Seria A" />
             </Link>
-            <Link to="/ligue1">
+            <Link to="/france/ligue1">
               <Button country="France" league="Ligue 1" />
             </Link>
-            <Link to="/championship">
+            <Link to="/england/championship">
               <Button country="England" league="Championship" />
+            </Link>
+
+            <Link to="/russia/premier">
+              <Button country="Russia" league="Premier League" />
             </Link>
           </div>
 
-          <Route path="/epl" component={RoundTable} />
-          <Route path="/laliga" component={RoundTable} />
-          <Route path="/bundesliga" component={RoundTable} />
-          <Route path="/seria" component={RoundTable} />
-          <Route path="/ligue1" component={RoundTable} />
-          <Route path="/championship" component={RoundTable} />
+          <Route exact path="/" component={Hello} />
+          <Route path="/england/epl" component={RoundTable} />
+          <Route path="/spain/laliga" component={RoundTable} />
+          <Route path="/germany/bundesliga" component={RoundTable} />
+          <Route path="/italy/seria" component={RoundTable} />
+          <Route path="/france/ligue1" component={RoundTable} />
+          <Route path="/england/championship" component={RoundTable} />
+          <Route path="/russia/premier" component={RoundTable} />
         </div>
       </Router>
     );

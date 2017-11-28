@@ -1,65 +1,85 @@
 /* @flow */
 
 import React from 'react';
-import { getTable, sortMatch, type Round, type Liga } from '../utils/getTable';
+import { getTable, type Round, type Liga } from '../utils/getTable';
 import { epl } from '../tables/epl';
 import { laliga } from '../tables/laliga';
 import { bundesliga } from '../tables/bundesliga';
 import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { championship } from '../tables/championship';
+import { russianPL } from '../tables/russianPL';
 import { round14 } from '../rounds/laliga/round14';
 import { EPLround14 } from '../rounds/epl/round14';
 import { BundesligaRound14 } from '../rounds/bundesliga/round14';
 import { SeriaARound15 } from '../rounds/seriaA/round15';
 import { FranceRound15 } from '../rounds/ligue1/round15';
 import { shipRound20 } from '../rounds/championship/round20';
+import { RussiaRound19 } from '../rounds/russianPL/round19';
 import SvgIcon from './SvgIcon/SvgIcon';
 import s from './style.scss';
 
-type Props = {
+type Props = {|
   round: Round,
   liga: Liga,
   match: Object
+|};
+
+type State = {
+  soft: boolean
 };
 
-class RoundTable extends React.Component<Props, void> {
+class RoundTable extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      soft: true
+    };
+  }
+
+  toggleMode = () => {
+    this.setState({ soft: !this.state.soft });
+  };
+
   render() {
     const { match: route } = this.props;
+    const { soft } = this.state;
+
     let matches;
-
-    if (route.url === '/seria') {
-      getTable(SeriaARound15, seriaA);
-      matches = SeriaARound15.sort(sortMatch);
+    if (route.url === '/italy/seria') {
+      matches = getTable(SeriaARound15, seriaA, { soft });
     }
 
-    if (route.url === '/epl') {
-      getTable(EPLround14, epl);
-      matches = EPLround14.sort(sortMatch);
+    if (route.url === '/england/epl') {
+      matches = getTable(EPLround14, epl, { soft });
     }
 
-    if (route.url === '/laliga') {
-      getTable(round14, laliga);
-      matches = round14.sort(sortMatch);
+    if (route.url === '/spain/laliga') {
+      matches = getTable(round14, laliga, { soft });
     }
 
-    if (route.url === '/bundesliga') {
-      getTable(BundesligaRound14, bundesliga);
-      matches = BundesligaRound14.sort(sortMatch);
+    if (route.url === '/germany/bundesliga') {
+      matches = getTable(BundesligaRound14, bundesliga, { soft });
     }
 
-    if (route.url === '/ligue1') {
-      getTable(FranceRound15, ligue1);
-      matches = FranceRound15.sort(sortMatch);
+    if (route.url === '/france/ligue1') {
+      matches = getTable(FranceRound15, ligue1, { soft });
     }
 
-    if (route.url === '/championship') {
-      getTable(shipRound20, championship);
-      matches = shipRound20.sort(sortMatch);
+    if (route.url === '/england/championship') {
+      matches = getTable(shipRound20, championship, { soft });
+    }
+
+    if (route.url === '/russia/premier') {
+      matches = getTable(RussiaRound19, russianPL, { soft });
     }
 
     return (
       <div className={s.container}>
+        <div onClick={this.toggleMode}>
+          <SvgIcon file="star" style={{ fill: !soft ? 'yellow' : null, cursor: 'pointer' }} />
+        </div>
+
         {matches &&
           matches.map((match, i) => {
             let icon;
