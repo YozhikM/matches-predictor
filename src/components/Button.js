@@ -3,22 +3,15 @@
 import React from 'react';
 
 type Props = {
-  show: string,
   country: string,
-  league: string,
-  onChange: Function
+  league: string
 };
 
 class Button extends React.Component<Props, void> {
-  onClick = () => {
-    const { show, onChange } = this.props;
-    onChange(show);
-  };
-
   render() {
     const { country, league } = this.props;
     return (
-      <button onClick={this.onClick}>
+      <button>
         {country} <br /> {league}
       </button>
     );

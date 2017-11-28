@@ -42,6 +42,7 @@
     "react": "^16.1.1",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
     "react-text-mask": "^5.0.2",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
