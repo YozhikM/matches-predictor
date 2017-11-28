@@ -69,7 +69,7 @@ export const championship = {
   Brentford: {
     place: 14,
     points: 24,
-    logo: 'http://st1.soccer365.ru/s1/logo/3OT1s_64_6997.png'
+    logo: 'http://st1.soccer365.ru/s1/logo/kaKCZ_6997.png'
   },
   Norvich: {
     place: 15,
