@@ -20,22 +20,27 @@ class Container extends React.Component<Props, State> {
             <Link to="/england/epl">
               <Button country="England" league="EPL" />
             </Link>
+
             <Link to="/spain/laliga">
               <Button country="Spain" league="La Liga" />
             </Link>
+
             <Link to="/germany/bundesliga">
               <Button country="Germany" league="Bundesliga" />
             </Link>
+
             <Link to="/italy/seria">
               <Button country="Italy" league="Seria A" />
             </Link>
+
             <Link to="/france/ligue1">
               <Button country="France" league="Ligue 1" />
             </Link>
+
             <Link to="/england/championship">
               <Button country="England" league="Championship" />
             </Link>
-
+            
             <Link to="/russia/premier">
               <Button country="Russia" league="Premier League" />
             </Link>
