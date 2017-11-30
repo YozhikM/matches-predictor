@@ -10,10 +10,10 @@ import { ligue1 } from '../tables/ligue1';
 import { championship } from '../tables/championship';
 import { russianPL } from '../tables/russianPL';
 import { round14 } from '../rounds/laliga/round14';
-import { EPLround14 } from '../rounds/epl/round14';
+import { EPLround15 } from '../rounds/epl/round15';
 import { BundesligaRound14 } from '../rounds/bundesliga/round14';
 import { SeriaARound15 } from '../rounds/seriaA/round15';
-import { FranceRound15 } from '../rounds/ligue1/round15';
+import { FranceRound16 } from '../rounds/ligue1/round16';
 import { shipRound20 } from '../rounds/championship/round20';
 import { RussiaRound19 } from '../rounds/russianPL/round19';
 import SvgIcon from './SvgIcon/SvgIcon';
@@ -51,7 +51,7 @@ class RoundTable extends React.Component<Props, State> {
     }
 
     if (route.url === '/england/epl') {
-      matches = getTable(EPLround14, epl, { soft });
+      matches = getTable(EPLround15, epl, { soft });
     }
 
     if (route.url === '/spain/laliga') {
@@ -63,7 +63,7 @@ class RoundTable extends React.Component<Props, State> {
     }
 
     if (route.url === '/france/ligue1') {
-      matches = getTable(FranceRound15, ligue1, { soft });
+      matches = getTable(FranceRound16, ligue1, { soft });
     }
 
     if (route.url === '/england/championship') {
