@@ -8,14 +8,12 @@ import { bundesliga } from '../tables/bundesliga';
 import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { championship } from '../tables/championship';
-import { russianPL } from '../tables/russianPL';
-import { round14 } from '../rounds/laliga/round14';
-import { EPLround15 } from '../rounds/epl/round15';
-import { BundesligaRound14 } from '../rounds/bundesliga/round14';
-import { SeriaARound15 } from '../rounds/seriaA/round15';
-import { FranceRound16 } from '../rounds/ligue1/round16';
-import { shipRound20 } from '../rounds/championship/round20';
-import { RussiaRound19 } from '../rounds/russianPL/round19';
+import { round15 } from '../rounds/laliga/round15';
+import { EPLround16 } from '../rounds/epl/round16';
+import { BundesligaRound15 } from '../rounds/bundesliga/round15';
+import { SeriaARound16 } from '../rounds/seriaA/round16';
+import { FranceRound17 } from '../rounds/ligue1/round17';
+import { shipRound21 } from '../rounds/championship/round21';
 import SvgIcon from './SvgIcon/SvgIcon';
 import s from './style.scss';
 
@@ -47,31 +45,27 @@ class RoundTable extends React.Component<Props, State> {
 
     let matches;
     if (route.url === '/italy/seria') {
-      matches = getTable(SeriaARound15, seriaA, { soft });
+      matches = getTable(SeriaARound16, seriaA, { soft });
     }
 
     if (route.url === '/england/epl') {
-      matches = getTable(EPLround15, epl, { soft });
+      matches = getTable(EPLround16, epl, { soft });
     }
 
     if (route.url === '/spain/laliga') {
-      matches = getTable(round14, laliga, { soft });
+      matches = getTable(round15, laliga, { soft });
     }
 
     if (route.url === '/germany/bundesliga') {
-      matches = getTable(BundesligaRound14, bundesliga, { soft });
+      matches = getTable(BundesligaRound15, bundesliga, { soft });
     }
 
     if (route.url === '/france/ligue1') {
-      matches = getTable(FranceRound16, ligue1, { soft });
+      matches = getTable(FranceRound17, ligue1, { soft });
     }
 
     if (route.url === '/england/championship') {
-      matches = getTable(shipRound20, championship, { soft });
-    }
-
-    if (route.url === '/russia/premier') {
-      matches = getTable(RussiaRound19, russianPL, { soft });
+      matches = getTable(shipRound21, championship, { soft });
     }
 
     return (

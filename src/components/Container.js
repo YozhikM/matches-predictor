@@ -40,10 +40,7 @@ class Container extends React.Component<Props, State> {
             <Link to="/england/championship">
               <Button country="England" league="Championship" />
             </Link>
-            
-            <Link to="/russia/premier">
-              <Button country="Russia" league="Premier League" />
-            </Link>
+
           </div>
 
           <Route exact path="/" component={Hello} />
@@ -53,7 +50,6 @@ class Container extends React.Component<Props, State> {
           <Route path="/italy/seria" component={RoundTable} />
           <Route path="/france/ligue1" component={RoundTable} />
           <Route path="/england/championship" component={RoundTable} />
-          <Route path="/russia/premier" component={RoundTable} />
         </div>
       </Router>
     );
