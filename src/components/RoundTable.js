@@ -8,12 +8,12 @@ import { bundesliga } from '../tables/bundesliga';
 import { seriaA } from '../tables/seriaA';
 import { ligue1 } from '../tables/ligue1';
 import { championship } from '../tables/championship';
-import { round15 } from '../rounds/laliga/round15';
-import { EPLround16 } from '../rounds/epl/round16';
-import { BundesligaRound15 } from '../rounds/bundesliga/round15';
-import { SeriaARound16 } from '../rounds/seriaA/round16';
-import { FranceRound17 } from '../rounds/ligue1/round17';
-import { shipRound21 } from '../rounds/championship/round21';
+import { round16 } from '../rounds/laliga/round16';
+import { EPLround17 } from '../rounds/epl/round17';
+import { BundesligaRound16 } from '../rounds/bundesliga/round16';
+import { SeriaARound17 } from '../rounds/seriaA/round17';
+import { FranceRound18 } from '../rounds/ligue1/round18';
+import { shipRound22 } from '../rounds/championship/round22';
 import SvgIcon from './SvgIcon/SvgIcon';
 import s from './style.scss';
 
@@ -29,27 +29,27 @@ class RoundTable extends React.Component<Props, void> {
 
     let matches;
     if (route.url === '/italy/seria') {
-      matches = getTable(SeriaARound16, seriaA);
+      matches = getTable(SeriaARound17, seriaA);
     }
 
     if (route.url === '/england/epl') {
-      matches = getTable(EPLround16, epl);
+      matches = getTable(EPLround17, epl);
     }
 
     if (route.url === '/spain/laliga') {
-      matches = getTable(round15, laliga);
+      matches = getTable(round16, laliga);
     }
 
     if (route.url === '/germany/bundesliga') {
-      matches = getTable(BundesligaRound15, bundesliga);
+      matches = getTable(BundesligaRound16, bundesliga);
     }
 
     if (route.url === '/france/ligue1') {
-      matches = getTable(FranceRound17, ligue1);
+      matches = getTable(FranceRound18, ligue1);
     }
 
     if (route.url === '/england/championship') {
-      matches = getTable(shipRound21, championship);
+      matches = getTable(shipRound22, championship);
     }
 
     return (

@@ -2,24 +2,14 @@
 
 import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import Loadable from 'react-loadable';
+import RoundTable from './RoundTable';
 import Button from './Button';
-import Loader from './Loader';
+import Hello from './Hello';
 import s from './style.scss';
 
 type Props = void;
 
 type State = void;
-
-const LoadableHello = Loadable({
-  loader: () => import('./Hello'),
-  loading: Loader
-});
-
-const LoadablePage = Loadable({
-  loader: () => import('./RoundTable'),
-  loading: Loader
-});
 
 class Container extends React.Component<Props, State> {
   render() {
@@ -52,13 +42,13 @@ class Container extends React.Component<Props, State> {
             </Link>
           </div>
 
-          <Route exact path="/" component={LoadableHello} />
-          <Route path="/england/epl" component={LoadablePage} />
-          <Route path="/spain/laliga" component={LoadablePage} />
-          <Route path="/germany/bundesliga" component={LoadablePage} />
-          <Route path="/italy/seria" component={LoadablePage} />
-          <Route path="/france/ligue1" component={LoadablePage} />
-          <Route path="/england/championship" component={LoadablePage} />
+          <Route exact path="/" component={Hello} />
+          <Route path="/england/epl" component={RoundTable} />
+          <Route path="/spain/laliga" component={RoundTable} />
+          <Route path="/germany/bundesliga" component={RoundTable} />
+          <Route path="/italy/seria" component={RoundTable} />
+          <Route path="/france/ligue1" component={RoundTable} />
+          <Route path="/england/championship" component={RoundTable} />
         </div>
       </Router>
     );
