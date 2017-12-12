@@ -128,3 +128,29 @@ img {
   width: 48px;
   height: 48px;
 }
+
+@keyframes colors {
+  0% {
+    color: white;
+  }
+  25% {
+    color: grey;
+  }
+  50% {
+    color: white;
+  }
+  75% {
+    color: grey;
+  }
+  100% {
+    color: white;
+  }
+}
+
+.loader {
+  position: absolute;
+  z-index: 2;
+  left: calc(50% - 24px);
+  animation-name: colors;
+  animation-duration: 3s;
+}

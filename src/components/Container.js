@@ -4,6 +4,7 @@ import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Button from './Button';
+import Loader from './Loader';
 import s from './style.scss';
 
 type Props = void;
@@ -12,12 +13,12 @@ type State = void;
 
 const LoadableHello = Loadable({
   loader: () => import('./Hello'),
-  loading: 'Loading...',
+  loading: Loader
 });
 
 const LoadablePage = Loadable({
   loader: () => import('./RoundTable'),
-  loading: 'Loading...',
+  loading: Loader
 });
 
 class Container extends React.Component<Props, State> {
@@ -49,7 +50,6 @@ class Container extends React.Component<Props, State> {
             <Link to="/england/championship">
               <Button country="England" league="Championship" />
             </Link>
-
           </div>
 
           <Route exact path="/" component={LoadableHello} />
