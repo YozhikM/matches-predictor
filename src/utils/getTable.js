@@ -37,7 +37,7 @@ function result(a, b, c = 0):number {
   return ~~(a + b + c);
 }
 
-export function getTable(round: Round, liga: Liga, mode: Object) {
+export function getTable(round: Round, liga: Liga) {
   for (let i = 0; i < round.length; i++) {
     let home = round[i].home;
     let away = round[i].away;
@@ -59,7 +59,7 @@ export function getTable(round: Round, liga: Liga, mode: Object) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - (mode.soft ? 3 : 6);
+        round[i].rating = result(place, diffInPlace) - 6;
       } else {
         round[i].rating = result(place, diffInPlace);
       }
@@ -69,7 +69,7 @@ export function getTable(round: Round, liga: Liga, mode: Object) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - (mode.soft ? 3 : 6);
+        round[i].rating = result(place, diffInPlace) - 6;
       } else {
         round[i].rating = result(place, diffInPlace);
       }

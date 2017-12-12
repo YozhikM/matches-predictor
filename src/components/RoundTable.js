@@ -23,57 +23,37 @@ type Props = {|
   match: Object
 |};
 
-type State = {
-  soft: boolean
-};
-
-class RoundTable extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      soft: true
-    };
-  }
-
-  toggleMode = () => {
-    this.setState({ soft: !this.state.soft });
-  };
-
+class RoundTable extends React.Component<Props, void> {
   render() {
     const { match: route } = this.props;
-    const { soft } = this.state;
 
     let matches;
     if (route.url === '/italy/seria') {
-      matches = getTable(SeriaARound16, seriaA, { soft });
+      matches = getTable(SeriaARound16, seriaA);
     }
 
     if (route.url === '/england/epl') {
-      matches = getTable(EPLround16, epl, { soft });
+      matches = getTable(EPLround16, epl);
     }
 
     if (route.url === '/spain/laliga') {
-      matches = getTable(round15, laliga, { soft });
+      matches = getTable(round15, laliga);
     }
 
     if (route.url === '/germany/bundesliga') {
-      matches = getTable(BundesligaRound15, bundesliga, { soft });
+      matches = getTable(BundesligaRound15, bundesliga);
     }
 
     if (route.url === '/france/ligue1') {
-      matches = getTable(FranceRound17, ligue1, { soft });
+      matches = getTable(FranceRound17, ligue1);
     }
 
     if (route.url === '/england/championship') {
-      matches = getTable(shipRound21, championship, { soft });
+      matches = getTable(shipRound21, championship);
     }
 
     return (
       <div className={s.container}>
-        <div onClick={this.toggleMode}>
-          <SvgIcon file="star" style={{ fill: !soft ? 'yellow' : null, cursor: 'pointer' }} />
-        </div>
-
         {matches &&
           matches.map((match, i) => {
             let icon;
