@@ -14,6 +14,13 @@ type Props = {
 };
 
 class SvgIcon extends React.Component<Props, void> {
+  shouldComponentUpdate(nextProps: Props) {
+      if (nextProps.file === this.props.file || nextProps.style === this.props.style) {
+        return false;
+      }
+      return true;
+  }
+
   render() {
     const { file, wh = '24px', width, height } = this.props;
 

@@ -8,6 +8,13 @@ type Props = {
 };
 
 class Button extends React.Component<Props, void> {
+  shouldComponentUpdate(nextProps: Props) {
+    if (nextProps === this.props) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     const { country, league } = this.props;
     return (
