@@ -2,10 +2,11 @@
   "name": "region-160",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mysolaris.xyz/football",
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
     "babel-loader": "7.1.1",
     "babel-polyfill": "^6.26.0",
