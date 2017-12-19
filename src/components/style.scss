@@ -162,6 +162,7 @@ img {
   padding: 0 0.5em;
   width: 48px;
   height: 48px;
+  object-fit: contain;
 }
 
 @keyframes colors {
@@ -187,5 +188,5 @@ img {
   z-index: 2;
   left: calc(50% - 24px);
   animation-name: colors;
-  animation-duration: 3s;
+  animation-duration: infinite;
 }

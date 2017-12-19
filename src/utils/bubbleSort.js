@@ -1,6 +1,6 @@
 /* @flow */
 
-export default function bubbleSort(array: Array<any>): Array<any> {
+export default function bubbleSort(array: Array<number>): Array<number> {
   let n = array.length - 1;
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n - i; j++) {

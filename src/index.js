@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import whyDidYouUpdate from 'why-did-you-update';
 
 if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: false })
+  whyDidYouUpdate(React, { groupByComponent: true })
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,104 +1,152 @@
 /* @flow */
 
 import React from 'react';
-import { getTable, type Round, type Liga } from '../utils/getTable';
-import { epl } from '../tables/epl';
-import { laliga } from '../tables/laliga';
-import { bundesliga } from '../tables/bundesliga';
-import { seriaA } from '../tables/seriaA';
-import { ligue1 } from '../tables/ligue1';
-import { championship } from '../tables/championship';
-import { round16 } from '../rounds/laliga/round16';
-import { EPLround17 } from '../rounds/epl/round17';
-import { BundesligaRound16 } from '../rounds/bundesliga/round16';
-import { SeriaARound17 } from '../rounds/seriaA/round17';
-import { FranceRound18 } from '../rounds/ligue1/round18';
-import { shipRound22 } from '../rounds/championship/round22';
+import { getTable } from '../utils/getTable';
+import { format } from 'date-fns';
 import SvgIcon from './SvgIcon/SvgIcon';
+import Loader from './Loader';
 import s from './style.scss';
 
-type Props = {|
-  round: Round,
-  liga: Liga,
-  match: Object
-|};
+type Props = {
+	match: Object
+};
 
-class RoundTable extends React.Component<Props, void> {
-  render() {
-    const { match: route } = this.props;
+type State = {
+	isLoading: boolean,
+	standing: Array<Object>,
+	fixtures: Array<Object>,
+};
 
-    let matches;
-    if (route.url === '/italy/seria') {
-      matches = getTable(SeriaARound17, seriaA);
-    }
+class RoundTable extends React.Component<Props, State> {
+	constructor(props: Props) {
+		super(props);
+		this.state = {
+			isLoading: true,
+		}
+	}
+	componentDidMount() {
+		const { match: route } = this.props;
 
-    if (route.url === '/england/epl') {
-      matches = getTable(EPLround17, epl);
-    }
+		if (route.url === '/italy/seria') {
+			this.getData(456);
+		}
 
-    if (route.url === '/spain/laliga') {
-      matches = getTable(round16, laliga);
-    }
+		if (route.url === '/england/epl') {
+			this.getData(445);
+		}
 
-    if (route.url === '/germany/bundesliga') {
-      matches = getTable(BundesligaRound16, bundesliga);
-    }
+		if (route.url === '/spain/laliga') {
+			this.getData(455);
+		}
 
-    if (route.url === '/france/ligue1') {
-      matches = getTable(FranceRound18, ligue1);
-    }
+		if (route.url === '/germany/bundesliga') {
+			this.getData(452);
+		}
 
-    if (route.url === '/england/championship') {
-      matches = getTable(shipRound22, championship);
-    }
+		if (route.url === '/france/ligue1') {
+			this.getData(450);
+		}
 
-    return (
-      <div className={s.container}>
-        {matches &&
-          matches.map((match, i) => {
-            let icon;
-            if (!match.rating) match.rating = 0;
+		if (route.url === '/england/championship') {
+			this.getData(446);
+		}
+	}
 
-            if (match.rating <= ~~(matches.length / 1.75)) {
-              icon = <SvgIcon file="flame" />;
-            }
-            if (match.rating > ~~(matches.length / 1.75) && match.rating <= matches.length / 1.2) {
-              icon = <SvgIcon file="sunny" />;
-            }
-            if (match.survive) {
-              icon = <SvgIcon file="fangs" />;
-            }
+	getData = (league: number) => {
+		if (sessionStorage.getItem(`standing_${league}`)) {
+			sessionStorage.object;
+			const data = JSON.parse(sessionStorage[`standing_${league}`]);
+			this.setState({ standing: data.standing }, () => {
+				this.getFixtures(league, data.matchday);
+			});
+		} else {
+		fetch(`http://api.football-data.org/v1/competitions/${league}/leagueTable`, {
+			headers: { 'X-Auth-Token': 'f47b120c7d2440cf8422b83fab4901ab' }
+		})
+			.then(res => res.json())
+			.then(data => {
+				this.setState({ standing: data.standing }, () => {
+					sessionStorage.setItem(`standing_${league}`, JSON.stringify(data));
+					this.getFixtures(league, data.matchday);
+				});
+			})
+			.catch(err => console.log(err.toString()))
+		}
+	};
 
-            return (
-              <div key={i}>
-                {match.time &&
-                  match.day && (
-                    <div className={s.tr}>
-                      <div className={s.upDay}>
-                        {match.day}&nbsp;{'/'}
-                      </div>
-                      <div className={s.upTime}>
-                        {'/'}&nbsp;{match.time}
-                      </div>
-                    </div>
-                  )}
-                <div className={s.tr}>
-                  <div className={s.td && s.img}>
-                    <img src={match.homeLogo || ''} alt="" />
-                  </div>
-                  <div className={s.tdLeft}>{match.home}</div>
-                  <div className={s.tdCenter}>{icon}</div>
-                  <div className={s.tdRight}>{match.away}</div>
-                  <div className={s.td && s.img}>
-                    <img src={match.awayLogo || ''} alt="" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-      </div>
-    );
-  }
+	getFixtures = (league: number, matchday: number) => {
+		if (sessionStorage.getItem(`fixtures_${league}_${matchday}`)) {
+			sessionStorage.object;
+			const fixtures = JSON.parse(sessionStorage[`fixtures_${league}_${matchday}`]);
+			this.setState({ isLoading: false, fixtures });
+		} else {
+		fetch(`http://api.football-data.org/v1/competitions/${league}/fixtures?matchday=${matchday}`, {
+			headers: { 'X-Auth-Token': 'f47b120c7d2440cf8422b83fab4901ab' }
+		})
+			.then(res => res.json())
+			.then(data => {
+			    sessionStorage.setItem(`fixtures_${league}_${matchday}`, JSON.stringify(data.fixtures));
+				this.setState({ isLoading: false, fixtures: data.fixtures });
+			})
+			.catch(err => console.log(err.toString()))
+		}
+	};
+
+	render() {
+		const { isLoading, standing, fixtures } = this.state;
+
+		if (isLoading && !standing && !fixtures) return (
+			<Loader />
+		);
+
+		let matches;
+		if (!isLoading && standing && fixtures) { 
+			matches = getTable({ standing, fixtures });
+
+			return (
+				<div className={s.container}>
+					{matches &&
+						matches.map((match, i) => {
+							const { rating, date, homeLogo, awayLogo, homeTeamName, awayTeamName, survive } = match;
+							let icon;
+
+							if (rating <= ~~(matches.length / 1.75)) {
+								icon = <SvgIcon file="flame" />;
+							}
+							if (rating > ~~(matches.length / 1.75) && rating <= matches.length / 1.2) {
+								icon = <SvgIcon file="sunny" />;
+							}
+							if (survive) {
+								icon = <SvgIcon file="fangs" />;
+							}
+
+							return (
+								<div key={i}>
+									{date && (
+										<div className={s.tr} style={{ justifyContent: 'center' }}>
+												{format(date, 'DD.MM // H:mm')}
+										</div>
+									)}
+									<div className={s.tr}>
+										<div className={s.td && s.img}>
+											<img src={homeLogo} alt="" />
+										</div>
+										<div className={s.tdLeft}>{homeTeamName}</div>
+										<div className={s.tdCenter}>{icon}</div>
+										<div className={s.tdRight}>{awayTeamName}</div>
+										<div className={s.td && s.img}>
+											<img src={awayLogo} alt="" />
+										</div>
+									</div>
+								</div>
+							);
+						})}
+				</div>
+			);
+		}
+
+		return null;
+	}
 }
 
 export default RoundTable;

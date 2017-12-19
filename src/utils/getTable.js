@@ -1,31 +1,12 @@
 /* @flow */
 
-type Match = {
-  home: string,
-  away: string,
-  rating?: number,
-  homeLogo?: ?string,
-  awayLogo?: ?string,
-  survive?: ?boolean,
-  day?: string,
-  time?: string
-};
+import setLogo from "./setLogo";
 
-export type Round = Array<Match>;
-
-export type Liga = {
-  [key: string]: {
-    place: number,
-    points: number,
-    logo?: string
-  }
-};
-
-function getPlace(teamOne, teamTwo) {
+function getPlace(teamOne: number, teamTwo: number) {
   return (teamOne + teamTwo) / 2;
 }
 
-function getDiff(teamOne, teamTwo) {
+function getDiff(teamOne: number, teamTwo: number) {
   if (teamOne > teamTwo) {
     return teamOne - teamTwo;
   } else {
@@ -33,45 +14,72 @@ function getDiff(teamOne, teamTwo) {
   }
 }
 
-function result(a, b, c = 0):number {
+function getResult(a, b, c = 0): number {
   return ~~(a + b + c);
 }
 
-export function getTable(round: Round, liga: Liga) {
+function sortMatch(matchA, matchB) {
+  if (matchA.rating && matchB.rating) {
+    return matchA.rating - matchB.rating;
+  }
+}
+
+export function getTable(data) {
+  const { fixtures: round, standing } = data;
   for (let i = 0; i < round.length; i++) {
-    let home = round[i].home;
-    let away = round[i].away;
-    let homePlace = liga[home].place;
-    let awayPlace = liga[away].place;
-    let homePoints = liga[home].points;
-    let awayPoints = liga[away].points;
+    let home = round[i].homeTeamName;
+    let away = round[i].awayTeamName;
+
+    let awayPlace;
+    let homePlace;
+    let homePoints;
+    let awayPoints;
+    setLogo(standing);
+    for (let j = 0; j < standing.length; j++) {
+      if (standing[j].teamName === home) {
+        homePlace = standing[j].position;
+        homePoints = standing[j].points;
+        round[i].homeLogo = standing[j].crestURI;
+      }
+      if (standing[j].teamName === away) {
+        awayPlace = standing[j].position;
+        awayPoints = standing[j].points;
+        round[i].awayLogo = standing[j].crestURI;
+      }
+    }
     let place = getPlace(homePlace, awayPlace);
     let diffInPlace = getDiff(homePlace, awayPlace);
-    round[i].homeLogo = liga[home].logo;
-    round[i].awayLogo = liga[away].logo;
-    let diffInPoints;
+    let diffInPoints: number;
     const bottomOfTable = ~~(round.length * 1.5);
     const topOfTable = round.length / 2;
 
     if (homePoints > awayPoints) {
       diffInPoints = homePoints - awayPoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
+      if (
+        homePlace >= bottomOfTable &&
+        awayPlace >= bottomOfTable &&
+        diffInPoints <= 4
+      ) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 6;
+        round[i].rating = getResult(place, diffInPlace) - 6;
       } else {
-        round[i].rating = result(place, diffInPlace);
+        round[i].rating = getResult(place, diffInPlace);
       }
     } else {
       diffInPoints = awayPoints - homePoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
+      if (
+        homePlace >= bottomOfTable &&
+        awayPlace >= bottomOfTable &&
+        diffInPoints <= 4
+      ) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = result(place, diffInPlace) - 6;
+        round[i].rating = getResult(place, diffInPlace) - 6;
       } else {
-        round[i].rating = result(place, diffInPlace);
+        round[i].rating = getResult(place, diffInPlace);
       }
     }
     if (round[i].rating <= 1) {
@@ -79,11 +87,4 @@ export function getTable(round: Round, liga: Liga) {
     }
   }
   return round.sort(sortMatch);
-}
-
-// $FlowFixMe
-export function sortMatch(matchA: Match, matchB: Match) {
-  if (matchA.rating && matchB.rating) {
-    return matchA.rating - matchB.rating;
-  }
 }
