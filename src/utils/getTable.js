@@ -1,6 +1,6 @@
 /* @flow */
 
-import setLogo from "./setLogo";
+import setLogo from './setLogo';
 
 function getPlace(teamOne: number, teamTwo: number) {
   return (teamOne + teamTwo) / 2;
@@ -24,16 +24,16 @@ function sortMatch(matchA, matchB) {
   }
 }
 
-export function getTable(data) {
+export function getTable(data: { fixtures: Array<Object>, standing: Array<Object> }) {
   const { fixtures: round, standing } = data;
   for (let i = 0; i < round.length; i++) {
     let home = round[i].homeTeamName;
     let away = round[i].awayTeamName;
 
-    let awayPlace;
-    let homePlace;
-    let homePoints;
-    let awayPoints;
+    let awayPlace = 0;
+    let homePlace = 0;
+    let homePoints = 0;
+    let awayPoints = 0;
     setLogo(standing);
     for (let j = 0; j < standing.length; j++) {
       if (standing[j].teamName === home) {
@@ -55,11 +55,7 @@ export function getTable(data) {
 
     if (homePoints > awayPoints) {
       diffInPoints = homePoints - awayPoints;
-      if (
-        homePlace >= bottomOfTable &&
-        awayPlace >= bottomOfTable &&
-        diffInPoints <= 4
-      ) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
@@ -69,11 +65,7 @@ export function getTable(data) {
       }
     } else {
       diffInPoints = awayPoints - homePoints;
-      if (
-        homePlace >= bottomOfTable &&
-        awayPlace >= bottomOfTable &&
-        diffInPoints <= 4
-      ) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
@@ -86,5 +78,6 @@ export function getTable(data) {
       round[i].rating = 1;
     }
   }
+  // $FlowFixMe
   return round.sort(sortMatch);
 }
