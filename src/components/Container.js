@@ -7,9 +7,9 @@ import Button from './Button';
 import Hello from './Hello';
 import s from './style.scss';
 
-type Props = void;
+type Props = {};
 
-type State = void;
+type State = {};
 
 class Container extends React.Component<Props, State> {
   render() {
