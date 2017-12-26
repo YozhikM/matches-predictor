@@ -50,30 +50,35 @@ export function getTable(data: { fixtures: Array<Object>, standing: Array<Object
     let place = getPlace(homePlace, awayPlace);
     let diffInPlace = getDiff(homePlace, awayPlace);
     let diffInPoints: number;
-    const bottomOfTable = ~~(round.length * 1.5);
-    const topOfTable = round.length / 2;
+    const bottomOfTable = round.length * 1.5;
+    const topOfTable = round.length;
 
     if (homePoints > awayPoints) {
       diffInPoints = homePoints - awayPoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 3) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = getResult(place, diffInPlace) - 6;
+        round[i].rating = getResult(place, diffInPlace, -6);
       } else {
         round[i].rating = getResult(place, diffInPlace);
       }
     } else {
       diffInPoints = awayPoints - homePoints;
-      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 4) {
+      if (homePlace >= bottomOfTable && awayPlace >= bottomOfTable && diffInPoints <= 3) {
         round[i].survive = true;
       }
       if (homePlace <= topOfTable || awayPlace <= topOfTable) {
-        round[i].rating = getResult(place, diffInPlace) - 6;
+        round[i].rating = getResult(place, diffInPlace, -6);
       } else {
         round[i].rating = getResult(place, diffInPlace);
       }
     }
+    round[i].diffInPoints = diffInPoints;
+    round[i].diffInPlace = diffInPlace;
+    round[i].homePlace = homePlace;
+    round[i].awayPlace = awayPlace;
+    round[i].topOfTable = topOfTable;
     if (round[i].rating <= 1) {
       round[i].rating = 1;
     }

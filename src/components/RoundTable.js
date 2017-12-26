@@ -1,11 +1,13 @@
 /* @flow */
 
-import React from 'react';
-import { getTable } from '../utils/getTable';
-import { format } from 'date-fns';
-import SvgIcon from './SvgIcon/SvgIcon';
-import Loader from './Loader';
-import s from './style.scss';
+import React from "react";
+import { getTable } from "../utils/getTable";
+import getObjectFlowType from "../utils/getFlowType";
+import { format } from "date-fns";
+import SvgIcon from "./SvgIcon/SvgIcon";
+import Loader from "./Loader";
+import Modal from "./Modal";
+import s from "./style.scss";
 
 type Props = {
   match: Object
@@ -14,7 +16,8 @@ type Props = {
 type State = {
   isLoading: boolean,
   standing?: Array<Object>,
-  fixtures?: Array<Object>
+  fixtures?: Array<Object>,
+  indexOfModal?: ?number
 };
 
 class RoundTable extends React.Component<Props, State> {
@@ -27,27 +30,27 @@ class RoundTable extends React.Component<Props, State> {
   componentDidMount() {
     const { match: route } = this.props;
 
-    if (route.url === '/italy/seria') {
+    if (route.url === "/italy/seria") {
       this.getData(456);
     }
 
-    if (route.url === '/england/epl') {
+    if (route.url === "/england/epl") {
       this.getData(445);
     }
 
-    if (route.url === '/spain/laliga') {
+    if (route.url === "/spain/laliga") {
       this.getData(455);
     }
 
-    if (route.url === '/germany/bundesliga') {
+    if (route.url === "/germany/bundesliga") {
       this.getData(452);
     }
 
-    if (route.url === '/france/ligue1') {
+    if (route.url === "/france/ligue1") {
       this.getData(450);
     }
 
-    if (route.url === '/england/championship') {
+    if (route.url === "/england/championship") {
       this.getData(446);
     }
   }
@@ -60,9 +63,12 @@ class RoundTable extends React.Component<Props, State> {
         this.getFixtures(league, data.matchday);
       });
     } else {
-      fetch(`http://api.football-data.org/v1/competitions/${league}/leagueTable`, {
-        headers: { 'X-Auth-Token': 'f47b120c7d2440cf8422b83fab4901ab' }
-      })
+      fetch(
+        `http://api.football-data.org/v1/competitions/${league}/leagueTable`,
+        {
+          headers: { "X-Auth-Token": "f47b120c7d2440cf8422b83fab4901ab" }
+        }
+      )
         .then(res => res.json())
         .then(data => {
           this.setState({ standing: data.standing }, () => {
@@ -77,32 +83,51 @@ class RoundTable extends React.Component<Props, State> {
   getFixtures = (league: number, matchday: number) => {
     if (sessionStorage[`fixtures_${league}_${matchday}`]) {
       sessionStorage.object;
-      const fixtures = JSON.parse(sessionStorage[`fixtures_${league}_${matchday}`]);
+      const fixtures = JSON.parse(
+        sessionStorage[`fixtures_${league}_${matchday}`]
+      );
       this.setState({ isLoading: false, fixtures });
     } else {
       fetch(
         `http://api.football-data.org/v1/competitions/${league}/fixtures?matchday=${matchday}`,
         {
-          headers: { 'X-Auth-Token': 'f47b120c7d2440cf8422b83fab4901ab' }
+          headers: { "X-Auth-Token": "f47b120c7d2440cf8422b83fab4901ab" }
         }
       )
         .then(res => res.json())
         .then(data => {
-          sessionStorage.setItem(`fixtures_${league}_${matchday}`, JSON.stringify(data.fixtures));
+          sessionStorage.setItem(
+            `fixtures_${league}_${matchday}`,
+            JSON.stringify(data.fixtures)
+          );
           this.setState({ isLoading: false, fixtures: data.fixtures });
         })
         .catch(err => console.log(err.toString()));
     }
   };
 
+  onOpenModal = (e: Event, i: number) => {
+    const { indexOfModal } = this.state;
+    if (indexOfModal !== i) {
+      this.setState({
+        indexOfModal: i
+      });
+    } else {
+      this.setState({
+        indexOfModal: null
+      });
+    }
+  };
+
   render() {
-    const { isLoading, standing, fixtures } = this.state;
+    const { isLoading, standing, fixtures, indexOfModal } = this.state;
 
     // $FlowFixMe
     if (isLoading && !standing && !fixtures) return <Loader />;
 
     let matches;
     if (!isLoading && standing && fixtures) {
+      console.log('fixtures: ', fixtures, getObjectFlowType(fixtures));
       matches = getTable({ standing, fixtures });
 
       return (
@@ -120,10 +145,10 @@ class RoundTable extends React.Component<Props, State> {
               } = match;
               let icon;
 
-              if (rating <= ~~(matches.length / 1.75)) {
+              if (rating <= matches.length / 6) {
                 icon = <SvgIcon file="flame" />;
               }
-              if (rating > ~~(matches.length / 1.75) && rating <= matches.length / 1.2) {
+              if (rating > matches.length / 6 && rating <= matches.length) {
                 icon = <SvgIcon file="sunny" />;
               }
               if (survive) {
@@ -133,8 +158,12 @@ class RoundTable extends React.Component<Props, State> {
               return (
                 <div key={i}>
                   {date && (
-                    <div className={s.tr} style={{ justifyContent: 'center' }}>
-                      {format(date, 'DD.MM // H:mm')}
+                    <div
+                      className={s.tr}
+                      style={{ justifyContent: "center", cursor: "pointer" }}
+                      onClick={e => this.onOpenModal(e, i)}
+                    >
+                      {format(date, "DD.MM // H:mm")}
                     </div>
                   )}
                   <div className={s.tr}>
@@ -148,6 +177,7 @@ class RoundTable extends React.Component<Props, State> {
                       <img src={awayLogo} alt="" />
                     </div>
                   </div>
+                  {indexOfModal === i && <Modal match={match} />}
                 </div>
               );
             })}
