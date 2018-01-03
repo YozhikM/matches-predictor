@@ -297,6 +297,78 @@ export default function(standing: Array<Object>) {
       case 'FC Metz':
         team.crestURI = 'http://st1.soccer365.ru/s1/logo/fQCM0quS_64_98.png';
         break;
+      case 'Wolverhampton Wanderers FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/1KWoQ_41.png';
+        break;
+      case 'Bristol City':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/JpG9DNPvh_28.png';
+        break;
+      case 'Cardiff City FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/MzRVwi3B2_58.png';
+        break;
+      case 'Derby County':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/spf6EB5Z_741.png';
+        break;
+      case 'Leeds United':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/N68dWnaL_6930.png';
+        break;
+      case 'Sheffield United FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/lEegN3NFe_6992.png';
+        break;
+      case 'Middlesbrough FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/njdvtW_289.png';
+        break;
+      case 'Aston Villa FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/TJoULs2_214.png';
+        break;
+      case 'Preston North End':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/LRW9Jpmqi_6989.png';
+        break;
+      case 'Ipswich Town':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/SpUkErgq_746.png';
+        break;
+      case 'Fulham FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/LDLlKjCZS_176.png';
+        break;
+      case 'Brentford FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/kaKCZ_6997.png';
+        break;
+      case 'Nottingham Forest':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/IKz5BL_109.png';
+        break;
+      case 'Sheffield Wednesday':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/TqBnQi_6994.png';
+        break;
+      case 'Norwich City FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/zhBqj_227.png';
+        break;
+      case 'Millwall FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/iPsvu48I_6923.png';
+        break;
+      case 'Reading':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/SHAC2Z4_129.png';
+        break;
+      case 'Queens Park Rangers':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/pmwXr9_316.png';
+        break;
+      case 'Hull City FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/zcdKeT3Y_6968.png';
+        break;
+      case 'Barnsley FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/1A6S13qqG_243.png';
+        break;
+      case 'Burton Albion FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/GVbYSFo_6986.png';
+        break;
+      case 'Sunderland AFC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/GeRCv_137.png';
+        break;
+      case 'Bolton Wanderers FC':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/vYDP8XOBK_21.png';
+        break;
+      case 'Birmingham City':
+        team.crestURI = 'http://st1.soccer365.ru/s1/logo/Xg5nFhy_16.png';
+        break;
       default:
         break;
     }
