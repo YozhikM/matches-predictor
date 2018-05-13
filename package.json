@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://mysolaris.xyz/football",
   "dependencies": {
-    "autoprefixer": "8.0.0",
+    "autoprefixer": "8.5.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-jest": "^22.0.3",
