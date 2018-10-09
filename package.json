@@ -18,7 +18,7 @@
     "consolidated-events": "^1.1.1",
     "css-loader": "0.28.10",
     "date-fns": "^1.29.0",
-    "dotenv": "5.0.1",
+    "dotenv": "6.1.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.11.0",
