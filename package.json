@@ -27,7 +27,7 @@
     "eslint-plugin-flowtype": "2.46.1",
     "eslint-plugin-import": "2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react": "^7.14.0",
     "extract-text-webpack-plugin": "3.0.2",
     "feather-icons": "^4.4.0",
     "file-loader": "1.1.11",
