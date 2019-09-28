@@ -17,7 +17,7 @@
     "chalk": "2.3.1",
     "consolidated-events": "^1.1.1",
     "css-loader": "0.28.10",
-    "date-fns": "^1.29.0",
+    "date-fns": "^2.4.1",
     "dotenv": "5.0.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
