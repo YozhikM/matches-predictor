@@ -104,7 +104,7 @@
   "devDependencies": {
     "enzyme-to-json": "^3.1.2",
     "flow-bin": "^0.66.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.14.0",
     "react-test-renderer": "^16.1.1",
     "sass-loader": "^6.0.6",
     "svg-inline-loader": "^0.8.0",
